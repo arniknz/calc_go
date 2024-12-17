@@ -1,4 +1,4 @@
-package calculator
+package calculator_testing
 
 import (
 	"testing"
