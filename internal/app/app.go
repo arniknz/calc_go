@@ -16,7 +16,6 @@ type Response struct {
 
 type Request struct {
 	Expression string `json:"expression"`
-	Error      string `json:"error"`
 }
 
 func HandleRequest(w http.ResponseWriter, r *http.Request) {
@@ -30,8 +29,8 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 		err := decoder.Decode(&request)
 
 		if err != nil {
-			request.Error = fmt.Sprintf("Invalid JSON format: %v", err)
-			http.Error(w, request.Error, http.StatusBadRequest)
+			response.Error = fmt.Sprintf("Invalid JSON format: %v", err)
+			http.Error(w, response.Error, http.StatusBadRequest)
 			return
 		}
 
