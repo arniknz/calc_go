@@ -1,7 +1,6 @@
 package calculator
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -109,10 +108,10 @@ func evaluatePostfix(postfix []string) (float64, error) {
 				}
 				stack = append(stack, a/b)
 			default:
-				return 0, fmt.Errorf("unknown operator: %s", token)
+				return 0, ErrInvalidExpression
 			}
 		} else {
-			return 0, fmt.Errorf("invalid token: %s", token)
+			return 0, ErrInvalidExpression
 		}
 	}
 
