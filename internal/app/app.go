@@ -38,7 +38,7 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func StartServer() {
-	http.HandleFunc("/api/v1/calculator", CalcHandler)
+	http.HandleFunc("POST /api/v1/calculator", CalcHandler)
 	log.Printf("Starting server on port 8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
