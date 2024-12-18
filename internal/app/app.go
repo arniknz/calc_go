@@ -11,7 +11,7 @@ import (
 )
 
 type Request struct {
-	Expression string `json:"кулькулятор бебебе"`
+	Expression string `json:"expression"`
 }
 
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
