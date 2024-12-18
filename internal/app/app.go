@@ -27,7 +27,7 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	result, err := calculator.Calc(request.Expression)
 	if err != nil {
 		if errors.Is(err, calculator.ErrInvalidExpression) {
-			fmt.Fprintf(w, "err: %s", err.Error())
+			http.Error(w, err.Error(), http.StatusUnprocessableEntity)
 		} else {
 			fmt.Fprintf(w, "unknown err")
 		}
