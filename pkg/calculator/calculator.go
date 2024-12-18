@@ -1,7 +1,6 @@
 package calculator
 
 import (
-	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -57,7 +56,7 @@ func infixToPostfix(tokens []string) ([]string, error) {
 				operators = operators[:len(operators)-1]
 			}
 			if len(operators) == 0 {
-				return nil, errors.New("mismatched parentheses")
+				return nil, ErrMismatchedParentheses
 			}
 			operators = operators[:len(operators)-1]
 		} else if isOperator(token) {
@@ -67,13 +66,13 @@ func infixToPostfix(tokens []string) ([]string, error) {
 			}
 			operators = append(operators, token)
 		} else {
-			return nil, fmt.Errorf("invalid character")
+			return nil, ErrInvalidCharacter
 		}
 	}
 
 	for len(operators) > 0 {
 		if operators[len(operators)-1] == "(" {
-			return nil, errors.New("mismatched parentheses")
+			return nil, ErrMismatchedParentheses
 		}
 		output = append(output, operators[len(operators)-1])
 		operators = operators[:len(operators)-1]
@@ -91,7 +90,7 @@ func evaluatePostfix(postfix []string) (float64, error) {
 			stack = append(stack, num)
 		} else if isOperator(token) {
 			if len(stack) < 2 {
-				return 0, errors.New("invalid expression")
+				return 0, ErrInvalidExpression
 			}
 			b := stack[len(stack)-1]
 			a := stack[len(stack)-2]
@@ -106,7 +105,7 @@ func evaluatePostfix(postfix []string) (float64, error) {
 				stack = append(stack, a*b)
 			case "/":
 				if b == 0 {
-					return 0, errors.New("division by zero")
+					return 0, ErrDivisionByZero
 				}
 				stack = append(stack, a/b)
 			default:
@@ -118,7 +117,7 @@ func evaluatePostfix(postfix []string) (float64, error) {
 	}
 
 	if len(stack) != 1 {
-		return 0, errors.New("invalid expression")
+		return 0, ErrInvalidExpression
 	}
 
 	return stack[0], nil

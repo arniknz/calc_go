@@ -32,10 +32,10 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 		result, err := calculator.Calc(expression)
 
 		if err != nil {
-			if errors.Is(err, calculator.InvalidExpression) {
-				fmt.Fprintf(w, "err: %s", err.Error())
+			if errors.Is(err, calculator.ErrInvalidExpression) {
+				fmt.Fprintf(w, "error: %s", err.Error())
 			} else {
-				fmt.Fprintf(w, "unknown err")
+				fmt.Fprintf(w, "something went wrong")
 			}
 		} else {
 			fmt.Fprintf(w, "result: %f", result)

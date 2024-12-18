@@ -1,8 +1,10 @@
-package calculation
+package calculator
 
 import "errors"
 
 var (
-	InvalidExpression = errors.New("invalid expression")
-	DivisionByZero    = errors.New("division by zero")
+	ErrInvalidExpression     = errors.New("invalid expression")
+	ErrDivisionByZero        = errors.New("division by zero")
+	ErrMismatchedParentheses = errors.New("mismatched parentheses")
+	ErrInvalidCharacter      = errors.New("invalid character")
 )
