@@ -2,6 +2,7 @@ package main
 
 import (
 	application "github.com/arniknz/calc_go/internal/app"
+	"github.com/gorilla/mux"
 )
 
 func main() {
