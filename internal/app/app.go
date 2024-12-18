@@ -14,34 +14,31 @@ type Request struct {
 	Expression string `json:"expression"`
 }
 
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-	var request Request
-
-	body := r.Body
-	defer body.Close()
-	decoder := json.NewDecoder(body)
-	err := decoder.Decode(&request)
-
+func CalcHandler(w http.ResponseWriter, r *http.Request) {
+	request := new(Request)
+	defer r.Body.Close()
+	d := json.NewDecoder(r.Body)
+	err := d.Decode(&request)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	expression := request.Expression
-	result, err := calculator.Calc(expression)
-
+	result, err := calculator.Calc(request.Expression)
 	if err != nil {
 		if errors.Is(err, calculator.ErrInvalidExpression) {
-			fmt.Fprintf(w, "error: %s", err.Error())
+			fmt.Fprintf(w, "err: %s", err.Error())
 		} else {
-			fmt.Fprintf(w, "something went wrong")
+			fmt.Fprintf(w, "unknown err")
 		}
+
 	} else {
 		fmt.Fprintf(w, "result: %f", result)
 	}
 }
 
 func StartServer() {
+	http.HandleFunc("/api/v1/calculator", CalcHandler)
 	log.Printf("Starting server on port 8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
