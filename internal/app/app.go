@@ -35,10 +35,10 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 			}
 
 		} else {
-			fmt.Fprintf(w, "result: %f", result)
+			fmt.Fprintf(w, `{"result": %f}`, result)
 		}
 	} else {
-		http.Error(w, "Only POST method is allowed", http.StatusMethodNotAllowed)
+		http.Error(w, `{"error": "Only POST method is allowed"}`, http.StatusMethodNotAllowed)
 	}
 
 }
