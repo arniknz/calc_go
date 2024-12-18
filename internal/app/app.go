@@ -2,6 +2,7 @@ package application
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -9,18 +10,12 @@ import (
 	"github.com/arniknz/calc_go/pkg/calculator"
 )
 
-type Response struct {
-	Result string `json:"result"`
-	Error  string `json:"error"`
-}
-
 type Request struct {
 	Expression string `json:"expression"`
 }
 
 func HandleRequest(w http.ResponseWriter, r *http.Request) {
 	var request Request
-	var response Response
 
 	if r.Method == "POST" {
 		body := r.Body
@@ -29,21 +24,21 @@ func HandleRequest(w http.ResponseWriter, r *http.Request) {
 		err := decoder.Decode(&request)
 
 		if err != nil {
-			response.Error = fmt.Sprintf("Invalid JSON format: %v", err)
-			http.Error(w, response.Error, http.StatusBadRequest)
+			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
 
 		expression := request.Expression
 		result, err := calculator.Calc(expression)
 
-		if err == nil {
-			response.Result = fmt.Sprintf("%v", result)
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(response)
+		if err != nil {
+			if errors.Is(err, calculator.InvalidExpression) {
+				fmt.Fprintf(w, "err: %s", err.Error())
+			} else {
+				fmt.Fprintf(w, "unknown err")
+			}
 		} else {
-			response.Error = "Expression is not valid"
-			http.Error(w, response.Error, http.StatusUnprocessableEntity)
+			fmt.Fprintf(w, "result: %f", result)
 		}
 	} else {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
