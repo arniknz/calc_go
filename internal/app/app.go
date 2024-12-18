@@ -17,31 +17,27 @@ type Request struct {
 func HandleRequest(w http.ResponseWriter, r *http.Request) {
 	var request Request
 
-	if r.Method == "POST" {
-		body := r.Body
-		defer body.Close()
-		decoder := json.NewDecoder(body)
-		err := decoder.Decode(&request)
+	body := r.Body
+	defer body.Close()
+	decoder := json.NewDecoder(body)
+	err := decoder.Decode(&request)
 
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 
-		expression := request.Expression
-		result, err := calculator.Calc(expression)
+	expression := request.Expression
+	result, err := calculator.Calc(expression)
 
-		if err != nil {
-			if errors.Is(err, calculator.ErrInvalidExpression) {
-				fmt.Fprintf(w, "error: %s", err.Error())
-			} else {
-				fmt.Fprintf(w, "something went wrong")
-			}
+	if err != nil {
+		if errors.Is(err, calculator.ErrInvalidExpression) {
+			fmt.Fprintf(w, "error: %s", err.Error())
 		} else {
-			fmt.Fprintf(w, "result: %f", result)
+			fmt.Fprintf(w, "something went wrong")
 		}
 	} else {
-		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		fmt.Fprintf(w, "result: %f", result)
 	}
 }
 
