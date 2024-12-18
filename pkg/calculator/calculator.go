@@ -65,7 +65,7 @@ func infixToPostfix(tokens []string) ([]string, error) {
 			}
 			operators = append(operators, token)
 		} else {
-			return nil, ErrInvalidCharacter
+			return nil, ErrInvalidExpression
 		}
 	}
 
