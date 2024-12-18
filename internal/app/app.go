@@ -16,25 +16,31 @@ type Request struct {
 
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	request := new(Request)
-	defer r.Body.Close()
-	d := json.NewDecoder(r.Body)
-	err := d.Decode(&request)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
 
-	result, err := calculator.Calc(request.Expression)
-	if err != nil {
-		if errors.Is(err, calculator.ErrInvalidExpression) {
-			http.Error(w, err.Error(), http.StatusUnprocessableEntity)
-		} else {
-			fmt.Fprintf(w, "unknown err")
+	if r.Method == "POST" {
+		defer r.Body.Close()
+		d := json.NewDecoder(r.Body)
+		err := d.Decode(&request)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
 		}
 
+		result, err := calculator.Calc(request.Expression)
+		if err != nil {
+			if errors.Is(err, calculator.ErrInvalidExpression) {
+				http.Error(w, err.Error(), http.StatusUnprocessableEntity)
+			} else {
+				fmt.Fprintf(w, "unknown err")
+			}
+
+		} else {
+			fmt.Fprintf(w, "result: %f", result)
+		}
 	} else {
-		fmt.Fprintf(w, "result: %f", result)
+		http.Error(w, "Only POST method is allowed", http.StatusMethodNotAllowed)
 	}
+
 }
 
 func StartServer() {
