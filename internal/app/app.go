@@ -23,25 +23,25 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 		d.DisallowUnknownFields()
 		err := d.Decode(&request)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
+			http.Error(w, err.Error(), http.StatusBadRequest) // 400
 			return
 		}
 
 		result, err := calculator.Calc(request.Expression)
 		if err != nil {
 			if errors.Is(err, calculator.ErrInvalidExpression) {
-				http.Error(w, err.Error(), http.StatusUnprocessableEntity)
+				http.Error(w, err.Error(), http.StatusUnprocessableEntity) // 402
 			} else if errors.Is(err, calculator.ErrDivisionByZero) {
-				http.Error(w, err.Error(), http.StatusUnprocessableEntity)
+				http.Error(w, err.Error(), http.StatusUnprocessableEntity) // 402
 			} else {
 				fmt.Fprintf(w, "unknown err")
 			}
 
 		} else {
-			fmt.Fprintf(w, `{"result": %f}`, result)
+			fmt.Fprintf(w, `{"result": %f}`, result) // 200 OK
 		}
 	} else {
-		http.Error(w, `{"error": "Only POST method is allowed"}`, http.StatusMethodNotAllowed)
+		http.Error(w, `{"error": "Only POST method is allowed"}`, http.StatusMethodNotAllowed) // 405
 	}
 
 }
