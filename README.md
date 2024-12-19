@@ -22,7 +22,8 @@ This project implements a web service that evaluates arithmetic expressions subm
 | cURL request | Response | Status code |
 | ------------ | -------- | ----------- |
 |<code>curl --location 'localhost/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2+2*2"  }'</code>|<code>{"result": 6.000000}</code>| 200 |
-|<code>curl --location 'localhost/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2 + 2"  }'</code>|<code>{"result": 4.000000}</code>| 200 |
 |<code>curl --location 'localhost/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2 + "  }'</code>|<code>{"error": "Invalid expression"}</code>| 422 |
+|<code>curl --request GET --url 'localhost/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2 + 1"  }'</code>|<code>{"error": "Only POST method is allowed"}</code>| 405 |
+|<code>curl --location 'localhost/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "bebebe": "2 + 2"  }'</code>|<code>{"error": "Bad request"}</code>| 400 |
 
 
