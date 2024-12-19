@@ -1,4 +1,4 @@
-# calc_go: Web-service "Calculator"
+![image](https://github.com/user-attachments/assets/5b76ce82-5514-406a-bd6a-9ca94f62436f)# calc_go: Web-service "Calculator"
 
 ### Description
 This project implements a web service that evaluates arithmetic expressions submitted by the user via an HTTP request or cURL.
@@ -19,4 +19,12 @@ This project implements a web service that evaluates arithmetic expressions subm
 
 # Example requests
 ### cURL:
+| cURL request | Response | Status code |
+| ------------ | -------- | ----------- |
+| curl --location 'localhost/api/v1/calculate' \ | {"result": 6.000000} | 200 OK |
+| --header 'Content-Type: application/json' \    |                      |        |
+| --data '{                                      |                      |        |
+|  "expression": "2+2*2"                         |                      |        |
+|  }'                                            |                      |        |
+| ---------------------------------------------- | -------------------- | ------ |
 
