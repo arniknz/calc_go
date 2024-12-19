@@ -5,3 +5,13 @@ This project implements a web service that evaluates arithmetic expressions subm
 
 ## Starting the service
   1. Check that you have [Go](https://go.dev/dl/) installed
+  2. Clone the project from GitHub:
+     ```
+      git clone https://github.com/arniknz/calc_go.git
+     ```
+  3. Go to your project folder and start the server:
+     ```
+      cd .\calc_go\ # Windows
+      cd calc_go # Linux
+      go run .\cmd\main.go
+     ```
