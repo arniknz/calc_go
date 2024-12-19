@@ -34,7 +34,7 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 			} else if errors.Is(err, calculator.ErrDivisionByZero) {
 				http.Error(w, err.Error(), http.StatusUnprocessableEntity) // 402
 			} else {
-				fmt.Fprintf(w, "unknown err")
+				http.Error(w, `{"error": "Internal server error"}`, http.StatusInternalServerError)
 			}
 
 		} else {
