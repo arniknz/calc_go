@@ -20,6 +20,7 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		defer r.Body.Close()
 		d := json.NewDecoder(r.Body)
+		d.DisallowUnknownFields()
 		err := d.Decode(&request)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
