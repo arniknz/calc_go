@@ -18,3 +18,5 @@ This project implements a web service that evaluates arithmetic expressions subm
 
 
 # Example requests
+### cURL:
+
