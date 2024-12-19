@@ -11,7 +11,7 @@ This project implements a web service that evaluates arithmetic expressions subm
      ```
   3. Go to your project folder and start the server:
      ```
-      cd .\calc_go\ # Windows
-      cd calc_go # Linux
+      cd .\calc_go\
       go run .\cmd\main.go
      ```
+  4. The service will be available at: http://localhost:8080/api/v1/calculate
