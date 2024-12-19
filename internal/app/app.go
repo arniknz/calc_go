@@ -30,8 +30,6 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			if errors.Is(err, calculator.ErrInvalidExpression) {
 				http.Error(w, err.Error(), http.StatusUnprocessableEntity)
-			} else if errors.Is(err, calculator.ErrMismatchedParentheses) {
-				http.Error(w, err.Error(), http.StatusUnprocessableEntity)
 			} else {
 				fmt.Fprintf(w, "unknown err")
 			}

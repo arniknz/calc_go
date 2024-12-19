@@ -55,7 +55,7 @@ func infixToPostfix(tokens []string) ([]string, error) {
 				operators = operators[:len(operators)-1]
 			}
 			if len(operators) == 0 {
-				return nil, ErrMismatchedParentheses
+				return nil, ErrInvalidExpression
 			}
 			operators = operators[:len(operators)-1]
 		} else if isOperator(token) {
@@ -71,7 +71,7 @@ func infixToPostfix(tokens []string) ([]string, error) {
 
 	for len(operators) > 0 {
 		if operators[len(operators)-1] == "(" {
-			return nil, ErrMismatchedParentheses
+			return nil, ErrInvalidExpression
 		}
 		output = append(output, operators[len(operators)-1])
 		operators = operators[:len(operators)-1]
