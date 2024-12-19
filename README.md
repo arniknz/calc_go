@@ -1,1 +1,3 @@
-# calc_go: Веб-сервис "Калькулятор"
+# calc_go: Web-service "Calculator"
+
+## Description
