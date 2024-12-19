@@ -21,6 +21,6 @@ This project implements a web service that evaluates arithmetic expressions subm
 ### cURL:
 | cURL request | Response | Status code |
 | ------------ | -------- | ----------- |
-|<code>curl --location 'localhost/api/v1/calculate' <br>--header 'Content-Type: application/json' <br>--data '{ <br> "expression": "2+2*2"  }'</code>| {"result": 6.000000} | 200 OK |
+|<code>curl --location 'localhost/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2+2*2"  }'</code>|<code>{"result": 6.000000}</code>| 200 OK |
 
 
