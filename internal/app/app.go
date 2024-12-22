@@ -15,7 +15,7 @@ type Request struct {
 }
 
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
-	request := new(Request)
+	var request Request
 
 	if r.Method == "POST" {
 		defer r.Body.Close()
