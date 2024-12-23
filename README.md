@@ -28,6 +28,7 @@ This project implements a web service that evaluates arithmetic expressions subm
 
 ### Internal Server Error: 500 status code
 If an internal server error occurs, the service will return an error with status code 500
+### <code>{"error": "Internal server error"}</code>
 
 ### Json Postman requests:
 | METHOD | Json request | Response | Status code |
