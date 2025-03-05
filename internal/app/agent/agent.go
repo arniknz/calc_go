@@ -25,7 +25,7 @@ func NewAgent() *Agent {
 	}
 	OrchestratorPort := os.Getenv("ORCHESTRATOR_PORT")
 	if OrchestratorPort == "" {
-		OrchestratorPort = "http://localhost:8080"
+		OrchestratorPort = "http://orchestrator:8080"
 	}
 	return &Agent{
 		ComputingPower:   cp,
