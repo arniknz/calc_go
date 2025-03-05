@@ -9,12 +9,16 @@ This project implements a web service that evaluates arithmetic expressions subm
      ```
       git clone https://github.com/arniknz/calc_go.git
      ```
-  3. Go to your project folder and start the server:
+  3. To start service
      ```
       cd .\calc_go\
-      go run .\cmd\main.go
+      docker compose up -d
      ```
-  4. The service will be available at: http://localhost:8080/api/v1/calculate
+  4. To shutdown service
+     ```
+      docker compose down
+     ```
+  5. The service will be available at: http://localhost:8080/api/v1/calculate
 
 
 # Example requests
