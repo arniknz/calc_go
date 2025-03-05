@@ -20,27 +20,29 @@ This project implements a web service that evaluates arithmetic expressions subm
 ## Endpoints:
 
 Добавление вычисления арифметического выражения:
-<code>
-  curl --location 'localhost/api/v1/calculate' \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "expression": <строка с выражение>
-  }'
-</code>
+```
+    curl --location 'localhost/api/v1/calculate' \
+    --header 'Content-Type: application/json' \
+    --data '{
+      "expression": <строка с выражение>
+    }'
+```
 
 Status Codes: 201 - expression accepted, 422 - Invalid data, 500 - Something went wrond
 
 Response Body
 
+```
 {
     "id": unique_id
 }
+```
 
 Получение списка выражений
 <code>curl --location 'localhost/api/v1/expressions'</code>
 
 Response Body
-<code>
+```
 "expressions": [
         {
             "id": <идентификатор выражения>,
@@ -53,7 +55,7 @@ Response Body
             "result": <результат выражения>
         }
     ]
-</code>
+```
 
 Status Codes:
     200 - успешно получен список выражений
@@ -64,9 +66,11 @@ Status Codes:
 <code>curl --location 'localhost/api/v1/expressions/:id'</code>
 
 Status Codes:
+```
     200 - успешно получено выражение
     404 - нет такого выражения
     500 - что-то пошло не так
+```
 
 
 # Example requests
