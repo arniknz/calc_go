@@ -28,19 +28,19 @@ func Configure() *Config {
 	}
 	a, _ := strconv.Atoi(os.Getenv("TIME_ADDITION_MS"))
 	if a == 0 {
-		a = 100
+		a = 20
 	}
 	s, _ := strconv.Atoi(os.Getenv("TIME_SUBTRACTION_MS"))
 	if s == 0 {
-		s = 100
+		s = 20
 	}
 	m, _ := strconv.Atoi(os.Getenv("TIME_MULTIPLICATIONS_MS"))
 	if m == 0 {
-		m = 100
+		m = 70
 	}
 	d, _ := strconv.Atoi(os.Getenv("TIME_DIVISIONS_MS"))
 	if d == 0 {
-		d = 100
+		d = 70
 	}
 	return &Config{
 		Port:                port,
