@@ -24,7 +24,7 @@ Add expresion calc:
     curl --location 'localhost/api/v1/calculate' \
     --header 'Content-Type: application/json' \
     --data '{
-      "expression": <строка с выражение>
+      "expression": <your_expression>
     }'
 ```
 
@@ -45,14 +45,14 @@ Response Body:
 ```
 "expressions": [
         {
-            "id": <идентификатор выражения>,
-            "status": <статус вычисления выражения>,
-            "result": <результат выражения>
+            "id": <id>,
+            "status": <status: pending/progress/completed>,
+            "result": <calculation result>
         },
         {
-            "id": <идентификатор выражения>,
-            "status": <статус вычисления выражения>,
-            "result": <результат выражения>
+            "id": <id>,
+            "status": <status: pending/progress/completed>,
+            "result": <calculation result>
         }
     ]
 ```
