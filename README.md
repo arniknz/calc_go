@@ -73,6 +73,14 @@ Status Codes:
     500 - Something went wrond
 ```
 
+## template.env
+```
+  TIME_ADDITION_MS - time to complete the addition operation in milliseconds
+  TIME_SUBTRACTION_MS - subtraction operation execution time in milliseconds
+  TIME_MULTIPLICATIONS_MS - execution time of the multiplication operation in milliseconds
+  TIME_DIVISIONS_MS - time to complete the division operation in milliseconds
+```
+
 
 # Example requests
 ### cURL:
