@@ -12,13 +12,10 @@ This project implements a web service that evaluates arithmetic expressions subm
   3. To start service
      ```
       cd .\calc_go\
-      docker compose up -d
+      go run cmd/orchestrator/main.go
+      go run cmt/agent/main.go
      ```
-  4. To shutdown service
-     ```
-      docker compose down
-     ```
-  5. The service will be available at: http://localhost:8080/api/v1/calculate
+  4. The service will be available at: http://localhost:8080/api/v1/calculate
 
 
 # Example requests

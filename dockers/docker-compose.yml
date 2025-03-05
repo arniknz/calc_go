@@ -2,10 +2,12 @@ version: "3.8"
 services:
   orchestrator:
     build:
-      context: .
+      context: ./server
       dockerfile: Dockerfile.orchestrator
     ports:
       - "8080:8080"
+    networks:
+      - calc-net
     environment:
       - TIME_ADDITION_MS=50
       - TIME_SUBTRACTION_MS=50
