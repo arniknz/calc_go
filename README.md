@@ -1,4 +1,5 @@
 # calc_go: Web-service "Calculator"
+works, but without docker idk
 
 ### Description
 This project implements a web service that evaluates arithmetic expressions submitted by the user via an HTTP request or cURL.
