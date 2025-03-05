@@ -3,7 +3,7 @@
 ### Description
 This project implements a web service that evaluates arithmetic expressions submitted by the user via an HTTP request or cURL.
 
-## Starting the service
+# Starting the service
   1. Check that you have [Go](https://go.dev/dl/) installed
   2. Clone the project from GitHub:
      ```
@@ -17,7 +17,7 @@ This project implements a web service that evaluates arithmetic expressions subm
      ```
   4. The service will be available at: ```http://localhost:8080/api/v1/calculate```
 
-## Endpoints:
+# Endpoints:
 
 Add expresion calc:
 ```
@@ -73,7 +73,7 @@ Status Codes:
     500 - Something went wrond
 ```
 
-## template.env
+# template.env
 ```
   TIME_ADDITION_MS=50 - time to complete the addition operation in milliseconds
   TIME_SUBTRACTION_MS=50 - subtraction operation execution time in milliseconds
