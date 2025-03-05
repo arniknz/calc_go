@@ -1,11 +1,13 @@
 package calculator
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
 
-func Calc(expression string) (float64, error) {
+func Calc(operation string, a, b float64) (float64, error) {
+	expression := fmt.Sprintf("%f %s %f", a, operation, b)
 	tokens := tokenize(expression)
 	postfix, err := infixToPostfix(tokens)
 	if err != nil {

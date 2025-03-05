@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  orchestrator:
+    build:
+      context: .
+      dockerfile: Dockerfile.orchestrator
+    ports:
+      - "8080:8080"
+    environment:
+      - TIME_ADDITION_MS=50
+      - TIME_SUBTRACTION_MS=50
+      - TIME_MULTIPLICATIONS_MS=100
+      - TIME_DIVISIONS_MS=100
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    depends_on:
+      - orchestrator
+    environment:
+      - COMPUTING_POWER=4
+      - ORCHESTRATOR_URL=http://orchestrator:8080
