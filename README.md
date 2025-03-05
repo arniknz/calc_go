@@ -15,11 +15,11 @@ This project implements a web service that evaluates arithmetic expressions subm
       go run cmd/orchestrator/main.go
       go run cmt/agent/main.go
      ```
-  4. The service will be available at: http://localhost:8080/api/v1/calculate
+  4. The service will be available at: ```http://localhost:8080/api/v1/calculate```
 
 ## Endpoints:
 
-Добавление вычисления арифметического выражения:
+Add expresion calc:
 ```
     curl --location 'localhost/api/v1/calculate' \
     --header 'Content-Type: application/json' \
@@ -38,10 +38,10 @@ Response Body
 }
 ```
 
-Получение списка выражений
-<code>curl --location 'localhost/api/v1/expressions'</code>
+Get list of expressions:
+```curl --location 'localhost/api/v1/expressions'```
 
-Response Body
+Response Body:
 ```
 "expressions": [
         {
@@ -58,18 +58,19 @@ Response Body
 ```
 
 Status Codes:
-    200 - успешно получен список выражений
-    500 - что-то пошло не так
+```
+    200 - OK
+    500 - Something went wrond
+```
 
-
-Получение выражения по его идентификатору
-<code>curl --location 'localhost/api/v1/expressions/:id'</code>
+Get expression by id:
+```curl --location 'localhost/api/v1/expressions/:id'```
 
 Status Codes:
 ```
-    200 - успешно получено выражение
-    404 - нет такого выражения
-    500 - что-то пошло не так
+    200 - OK
+    404 - Expression not found
+    500 - Something went wrond
 ```
 
 
