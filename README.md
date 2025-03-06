@@ -107,3 +107,9 @@ If an internal server error occurs, the service will return an error with status
 | POST   | <code>{  "expression": "2 + "  }</code>|<code>{"error": "Invalid expression"}</code>| 422 |
 | GET    | <code>{  "expression": "2 + 1"  }</code>|<code>{"error": "Only POST method is allowed"}</code>| 405 |
 | POST   | <code>{  "bebebe": "2 + 2"  }</code>|<code>{"error": "Bad request"}</code>| 400 |
+
+## Testing
+```
+cd test/
+go test
+```
