@@ -89,7 +89,7 @@
 
 # Примеры запросов
 ### cURL:
-| METHOD | cURL request | Response | Status code |
+| МЕТОД | cURL запрос | Отевт | Код статуса |
 | ------ | ------------ | -------- | ----------- |
 | POST   |<code>curl --location 'http://localhost:8080/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2+2*2"  }'</code>|<code>{"result": 6.000000}</code>| 200 |
 | POST   |<code>curl --location 'http://localhost:8080/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2 + "  }'</code>|<code>{"error": "Invalid expression"}</code>| 422 |
@@ -101,9 +101,15 @@
 **<code>{"error": "Internal server error"}</code>**
 
 ### Json Postman запросы:
-| METHOD | Json request | Response | Status code |
+| МЕТОЖ | Json запрос | Ответ | Код статуса |
 | ------ | ------------ | -------- | ----------- |
 | POST   | <code>{  "expression": "2+2*2"  }</code>|<code>{"result": 6.000000}</code>| 200 |
 | POST   | <code>{  "expression": "2 + "  }</code>|<code>{"error": "Invalid expression"}</code>| 422 |
 | GET    | <code>{  "expression": "2 + 1"  }</code>|<code>{"error": "Only POST method is allowed"}</code>| 405 |
 | POST   | <code>{  "bebebe": "2 + 2"  }</code>|<code>{"error": "Bad request"}</code>| 400 |
+
+## Тестирование: Достаточно просто перейти в директорию с тестами и запустить go test
+```
+cd test/
+go test
+```
