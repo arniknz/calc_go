@@ -1,37 +1,37 @@
 # Веб-сервис "Калькулятор"
-works, but without docker idk
+работает, но без docker'а ай донт ноу
 
-### Description
-This project implements a web service that evaluates arithmetic expressions submitted by the user via an HTTP request.
+### Описание
+Этот проект реализует веб-сервис, который вычисляет арифметические выражения, присланные пользователем через HTTP-запрос.
 
-# Starting the service
-  1. Check that you have [Go](https://go.dev/dl/) installed
-  2. Clone the project from GitHub:
+# Запуск сервиса
+  1. Проверьте что у Вас установлен [Go](https://go.dev/dl/)
+  2. Склонируйте репу:
      ```
       git clone https://github.com/arniknz/calc_go.git
      ```
-  3. To start service
+  3. Чтобы запустить.. запустите:
      ```
       cd .\calc_go\
       go run cmd/orchestrator/main.go
       go run cmt/agent/main.go
      ```
-  4. The service will be available at: ```http://localhost:8080/api/v1/calculate```
+  4. Сервис будет доступен по адресу: ```http://localhost:8080/api/v1/calculate```
 
-# Endpoints:
+# Эндпоинты:
 
-Add expresion calc:
+Отправьте выражение:
 ```
     curl --location 'localhost/api/v1/calculate' \
     --header 'Content-Type: application/json' \
     --data '{
-      "expression": <your_expression>
+      "expression": <выражение>
     }'
 ```
 
-Status Codes: 201 - expression accepted, 422 - Invalid data, 500 - Something went wrond
+Кода статусов: 201 - Принято для обработки, 422 - Невалидные данные, 500 - Что-то пошло не так
 
-Response Body
+Тело ответа:
 
 ```
 {
@@ -39,42 +39,42 @@ Response Body
 }
 ```
 
-Get list of expressions:
+Получить список всех выражений, которые вы отправили:
 ```curl --location 'localhost/api/v1/expressions'```
 
-Response Body:
+Тело ответа:
 ```
 "expressions": [
         {
             "id": <id>,
-            "status": <status: pending/progress/completed>,
-            "result": <calculation result>
+            "status": <статус: pending/progress/completed>,
+            "result": <результатt>
         },
         {
             "id": <id>,
-            "status": <status: pending/progress/completed>,
-            "result": <calculation result>
+            "status": <статус: pending/progress/completed>,
+            "result": <результат>
         }
     ]
 ```
 
-Status Codes:
+Коды статусов:
 ```
     200 - OK
-    500 - Something went wrond
+    500 - Что-то пошло не так
 ```
 
-Get expression by id:
+Получить выражение по айдишнику:
 ```curl --location 'localhost/api/v1/expressions/:id'```
 
-Status Codes:
+Коды статусов:
 ```
     200 - OK
-    404 - Expression not found
-    500 - Something went wrond
+    404 - Выражение не найдено
+    500 - Что-то пошло не так
 ```
 
-# Console export variables
+# Экспорт переменных окружения через консоль
 ```
   export TIME_ADDITION_MS=50
   export TIME_SUBTRACTION_MS=50
@@ -85,7 +85,7 @@ Status Codes:
 ```
 
 
-# Example requests
+# Примеры запросов
 ### cURL:
 | METHOD | cURL request | Response | Status code |
 | ------ | ------------ | -------- | ----------- |
@@ -94,11 +94,11 @@ Status Codes:
 | GET    |<code>curl --request GET --url 'http://localhost:8080/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2 + 1"  }'</code>|<code>{"error": "Only POST method is allowed"}</code>| 405 |
 | POST   |<code>curl --location 'http://localhost:8080/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "bebebe": "2 + 2"  }'</code>|<code>{"error": "Bad request"}</code>| 400 |
 
-### Internal Server Error: 500 status code
-If an internal server error occurs, the service will return an error with status code 500
+### Internal Server Error: 500 код статуса
+Если случилось что-то в сервере и это не проблема клиента, то вернется ошибка 500
 **<code>{"error": "Internal server error"}</code>**
 
-### Json Postman requests:
+### Json Postman запросы:
 | METHOD | Json request | Response | Status code |
 | ------ | ------------ | -------- | ----------- |
 | POST   | <code>{  "expression": "2+2*2"  }</code>|<code>{"result": 6.000000}</code>| 200 |
