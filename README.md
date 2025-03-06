@@ -74,7 +74,7 @@ Status Codes:
     500 - Something went wrond
 ```
 
-# template.env
+# Console export variables
 ```
   export TIME_ADDITION_MS=50
   export TIME_SUBTRACTION_MS=50
