@@ -2,7 +2,7 @@
 works, but without docker idk
 
 ### Description
-This project implements a web service that evaluates arithmetic expressions submitted by the user via an HTTP request or cURL.
+This project implements a web service that evaluates arithmetic expressions submitted by the user via an HTTP request.
 
 # Starting the service
   1. Check that you have [Go](https://go.dev/dl/) installed
