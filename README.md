@@ -76,10 +76,12 @@ Status Codes:
 
 # template.env
 ```
-  TIME_ADDITION_MS=50 - time to complete the addition operation in milliseconds
-  TIME_SUBTRACTION_MS=50 - subtraction operation execution time in milliseconds
-  TIME_MULTIPLICATIONS_MS=100 - execution time of the multiplication operation in milliseconds
-  TIME_DIVISIONS_MS=100 - time to complete the division operation in milliseconds
+  export TIME_ADDITION_MS=50
+  export TIME_SUBTRACTION_MS=50
+  export TIME_MULTIPLICATIONS_MS=100
+  export TIME_DIVISIONS_MS=100
+  export COMPUTING_POWER=4
+
 ```
 
 
