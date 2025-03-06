@@ -89,7 +89,7 @@
 
 # Примеры запросов
 ### cURL:
-| МЕТОД | cURL запрос | Отевт | Код статуса |
+| МЕТОД | cURL запрос | Ответ | Код статуса |
 | ------ | ------------ | -------- | ----------- |
 | POST   |<code>curl --location 'http://localhost:8080/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2+2*2"  }'</code>|<code>{"result": 6.000000}</code>| 200 |
 | POST   |<code>curl --location 'http://localhost:8080/api/v1/calculate' --header 'Content-Type: application/json' --data '{  "expression": "2 + "  }'</code>|<code>{"error": "Invalid expression"}</code>| 422 |
